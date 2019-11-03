@@ -61,5 +61,8 @@
     "serverless-domain-manager": "^3.2.2",
     "serverless-http": "^2.0.2",
     "serverless-vpc-discovery": "^1.0.13"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }
