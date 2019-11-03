@@ -1,4 +1,5 @@
 FROM node:alpine
+# set environment variables
 ARG NODE_ENV
 ARG ONEUP_DEMOWEBAPPLOCAL_CLIENTSECRET
 ARG ONEUP_DEMOWEBAPPLOCAL_CLIENTID
@@ -16,8 +17,6 @@ COPY . ./
 COPY config-${NODE_ENV}.json config.json
 RUN npm install
 RUN apk del .gyp
-# set environment variables
-#RUN source .env-${NODE_ENV}
 # expose port (only necesary for local builds
 # heroku randomly assigns port)
 EXPOSE 3000
