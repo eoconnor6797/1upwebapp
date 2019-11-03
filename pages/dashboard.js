@@ -5,13 +5,14 @@ import { authenticate, logout, logoutEvent } from '../utils'
 import Header from '../components/Header.js'
 import Layout from "../components/layouts/Layout";
 import {Fancy, TodoList, FhirResource, Patient, Resources} from 'fhir-react'
+const port = process.env.PORT || 3000
 
 export default class Dashboard extends React.Component {
   static async getInitialProps ({ req, res }) {
     const user = await authenticate(req, res)
     if (typeof req === 'undefined'){
       let dashboard = await fetch(
-        `http://localhost:3000/api/dashboard`,
+        `http://localhost:${port}/api/dashboard`,
         {credentials: 'include'}
       ).then(r=>r.json());
       return { dashboard, user }
@@ -20,7 +21,7 @@ export default class Dashboard extends React.Component {
         'Authorization': 'Bearer ' + req.session.oneup_access_token
       }
       let dashboard = await fetch(
-        `http://localhost:3000/api/dashboard`,
+        `http://localhost:${port}/api/dashboard`,
         {headers: authHeader}
       ).then(r=>r.json());
       return { dashboard, user }

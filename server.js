@@ -11,6 +11,8 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 const server = express()
 
+const port = process.env.PORT || 3000
+
 app
   .prepare()
   .then(() => {
@@ -67,9 +69,9 @@ app
       return handle(req, res)
     })
 
-    server.listen(3000, err => {
+    server.listen(port, err => {
       if (err) throw err
-      console.log("> Ready on http://localhost:3000")
+      console.log("> Ready on http://localhost:${port}")
     })
   })
   .catch(ex => {
