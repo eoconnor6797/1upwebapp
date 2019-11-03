@@ -8,7 +8,7 @@ jspm_packages
 .next
 
 # local files
-config.json
+config*.json
 
 # env files
-.env
+.env*
