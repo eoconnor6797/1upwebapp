@@ -21,7 +21,7 @@ git clone https://github.com/eoconnor6797/1upwebapp.git
 ```
 
 
-2. Add your API keys to app server session, ex. `vim ~/.env-dev` or `~/.env-production`
+2. Add your API keys to app server session, ex. `vim .env-dev` or `.env-production`
 
 save you dev credentials in `.env-dev` and production credentials in `.env-production` in the apps working directory.
 
@@ -74,6 +74,22 @@ Logs will be located at `https://dashboard.heroku.com/apps/<your_heroku_app_name
 
 ## Test Health Systems
 You can test the demo web app with one of these [FHIR health system accounts](https://1up.health/dev/doc/fhir-test-credentials).
+
+## Future Improvements
+- deploy to AWS ECR and ECS instead of heroku
+- deploy a production mail server 
+- better secrets management
+- use CI/CD environment (Jenkins or AWS codeDeploy) for deployments instead of running script locally
+- connect git repo directly to CI pipeline
+- have tests block deployment script (requires passing tests)
+
+## Notes
+- Deployment is done using docker and heroku
+- I needed to make a few changes to the application: 
+  - allow a port to be assigned through environment varibales (heroku randomly assingns ports)
+  - for some reason I needed to rename `header.js` to get it to be recognized by the imports
+- I was only able to test this on linux (that is all I have available to me) but it should also work on MacOS
+
 
 ## Optional Setup: Setup email using actual email (relay) server
 Either run a test local server for development
